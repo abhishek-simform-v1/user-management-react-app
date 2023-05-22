@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+.container{
+    font-family: "Poppins";
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+  font-weight: 500;
+
+}
+.input{
+  background-color:  #faead6;
+  border:none;
+  padding:12px;
+  border-radius: 5px;
+  font-family: inherit;
+  font-weight: 500;
+}
+.input:focus{
+ outline: 5px solid #ffce93b2;
+}
+.inputField{
+  display: flex;
+  height: 90px;
+  gap: 0.2rem;
+  flex-direction: column;
+}
+.inputFile{
+  /* display: none; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+position: relative;
+}
+.profile_img{
+display: none;
+}
+.btn{
+  padding: 0.8rem 1rem;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+button{
+  cursor: pointer;
+}
+.error{
+  color: red;
+  /* display: none; */
+}
+.routeLink{
+  color: red;
+  cursor: pointer;
+}
+.RegisterRoute{
+  color: #0284c7;
+}
+.logoutBtn{
+  background-color: #0284c7;
+}
+.title{
+  font-size: 3rem;
+}
