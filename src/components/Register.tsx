@@ -7,25 +7,50 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import convertToBase64 from "../helper/convert";
-import { int, validationSchema } from "../validation/validationScema";
+import {
+  int,
+  loginValidateSchema,
+  validationSchema,
+} from "../validation/validationScema";
+import { useAppDispatch } from "../hooks/hook";
+import { addCurrentUser, addUser } from "../slice/Slice";
+import { checkIfUserExists } from "../authentication/authentication";
 const Register = () => {
   const [file, setFile] = useState("");
+  const dispatch = useAppDispatch();
+  const handleSignUp = () => {
+    if (checkIfUserExists(formik.values.email, formik.values.phone_number)) {
+      // user already exists
+      alert("User already exists");
+      formik.resetForm();
+    } else {
+      alert("New User Created");
+      // set current user and login status
+      dispatch(addUser(formik.values));
+      dispatch(addCurrentUser(formik.values));
+      formik.resetForm();
+      navigate("/");
+    }
+  };
 
   const formik = useFormik({
     initialValues: int,
     validationSchema: validationSchema,
-    onSubmit: (values) => console.log(values),
+    onSubmit: handleSignUp,
   });
-  const onUpload = async (e) => {
+  const onUpload = async (e: any) => {
     const base64: any = await convertToBase64(e.target.files[0]);
     setFile(base64);
     formik.setFieldValue("profile_img", base64);
   };
-
+  const handleReset = () => {
+    console.log("first");
+  };
   const navigate = useNavigate();
+
   return (
     <>
-      <div className={style.containerRegister}>
+      <div className={style.container}>
         <div className={style.formContainer}>
           <h1 className="title">Sign Up</h1>
 
@@ -138,14 +163,15 @@ const Register = () => {
               <button type="submit" className={`btn ${style.submitBtn}`}>
                 Submit
               </button>
-              <button className={`btn ${style.resetBtn}`}>Reset</button>
+              <button onClick={handleReset} className={`btn ${style.resetBtn}`}>
+                Reset
+              </button>
             </div>
           </form>
           <h4>
-            Already have an account ?{" "}
+            Already have an account ?
             <span className="routeLink" onClick={() => navigate("/")}>
-              {" "}
-              Login
+              &nbsp; Login
             </span>
           </h4>
         </div>
