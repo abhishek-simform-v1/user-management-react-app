@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import style from "./../styles/Auth.module.css";
 import heroImg from "./../assets/signup-banner.png";
@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import convertToBase64 from "../helper/convert";
 import {
+  get_log_info,
   int,
   loginValidateSchema,
   validationSchema,
@@ -44,10 +45,14 @@ const Register = () => {
     formik.setFieldValue("profile_img", base64);
   };
   const handleReset = () => {
-    console.log("first");
+    formik.resetForm();
   };
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if (get_log_info()) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [get_log_info()]);
   return (
     <>
       <div className={style.container}>

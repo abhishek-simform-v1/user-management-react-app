@@ -3,25 +3,44 @@ import { useNavigate } from "react-router-dom";
 import style from "./../styles/Auth.module.css";
 import heroImg from "./../assets/signup-banner.png";
 import { checkIfUserExists } from "../authentication/authentication";
-import { int, loginValidateSchema } from "../validation/validationScema";
+import {
+  get_log_info,
+  int,
+  loginValidateSchema,
+} from "../validation/validationScema";
 import { useFormik } from "formik";
+import { useAppDispatch } from "../hooks/hook";
+import { addCurrentUser } from "../slice/Slice";
+import { useEffect } from "react";
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  console.log(get_log_info());
   const handleLogIn = () => {
-    if (checkIfUserExists(formik.values.email)) {
+    if (checkIfUserExists(formik.values.email, formik.values.password)) {
       // user already exists
       formik.resetForm();
+      dispatch(addCurrentUser(formik.values));
       navigate("/dashboard");
     } else {
       alert("User does not exists");
     }
   };
-
+  const handleReset = () => {
+    formik.resetForm();
+  };
   const formik = useFormik({
     initialValues: int,
     validationSchema: loginValidateSchema,
     onSubmit: handleLogIn,
   });
+  useEffect(() => {
+    if (get_log_info()) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [get_log_info()]);
+
   return (
     <div className={style.container}>
       {/* Register
@@ -66,7 +85,9 @@ const Login = () => {
             <button className={`btn ${style.submitBtn}`} type="submit">
               Submit
             </button>
-            <button className={`btn ${style.resetBtn}`}>Reset</button>
+            <button className={`btn ${style.resetBtn}`} onClick={handleReset}>
+              Reset
+            </button>
           </div>
         </form>
         <h4>

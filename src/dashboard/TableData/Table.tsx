@@ -1,12 +1,14 @@
 import { memo } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hook";
 import { DummyDataInter } from "../../slice/Slice";
+import { current } from "@reduxjs/toolkit";
 
 const Table = () => {
   const data: DummyDataInter[] = useAppSelector((state) => state.user.users);
   const currentUser: DummyDataInter = useAppSelector(
     (state) => state.user.currentUser
   );
+  console.log(currentUser);
 
   const state = useAppSelector((state) => state.user.logedIn);
   const dispatch = useAppDispatch();

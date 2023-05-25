@@ -110,3 +110,11 @@ export const loginValidateSchema = Yup.object({
     ),
   password: Yup.string().required("Password Required!"),
 });
+export const currentUser = JSON.parse(localStorage.getItem("CurrentData")!);
+export const get_log_info = () => {
+  if (currentUser) {
+    return true;
+  } else {
+    return false;
+  }
+};

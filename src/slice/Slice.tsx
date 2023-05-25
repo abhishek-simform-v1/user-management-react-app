@@ -38,11 +38,12 @@ export const userSlice = createSlice({
     },
     addCurrentUser: (state, action: PayloadAction<DummyDataInter>) => {
       state.currentUser = action.payload;
-      localStorage.setItem("CurrentData", JSON.stringify(state.currentUser));
       state.logedIn = true;
+      localStorage.setItem("CurrentData", JSON.stringify(state.currentUser));
     },
     logOutUser: (state) => {
       state.logedIn = false;
+      localStorage.removeItem("CurrentData");
     },
   },
 });
