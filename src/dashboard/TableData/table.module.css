@@ -1,0 +1,9 @@
+.currentUser{
+    background-color: aqua;
+    display: flex;
+}
+.user{
+    display: flex;
+
+    background-color: aquamarine;
+}
