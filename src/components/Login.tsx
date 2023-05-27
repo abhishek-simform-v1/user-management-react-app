@@ -6,8 +6,7 @@ import { checkIfUserExists } from '../authentication/authentication';
 import { int, loginValidateSchema } from '../validation/validationScema';
 import { useFormik } from 'formik';
 import { useAppDispatch } from '../hooks/hook';
-import { addCurrentUser } from '../slice/Slice';
-import { useEffect } from 'react';
+import { DummyDataInter, addCurrentUser } from '../slice/Slice';
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
