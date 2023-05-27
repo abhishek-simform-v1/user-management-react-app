@@ -7,12 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import convertToBase64 from '../helper/convert';
-import {
-  get_log_info,
-  int,
-  loginValidateSchema,
-  validationSchema,
-} from '../validation/validationScema';
+import { int, validationSchema } from '../validation/validationScema';
 import { useAppDispatch } from '../hooks/hook';
 import { addCurrentUser, addUser } from '../slice/Slice';
 import { checkIfUserExists } from '../authentication/authentication';
@@ -31,7 +26,7 @@ const Register = () => {
       dispatch(addUser(formik.values));
       dispatch(addCurrentUser(formik.values));
       formik.resetForm();
-      navigate('/dashboard');
+      navigate('/home');
     }
   };
 
@@ -48,12 +43,26 @@ const Register = () => {
   const handleReset = () => {
     formik.resetForm();
   };
+  const currentUser = JSON.parse(localStorage.getItem('CurrentData')!); //
+  const get_log_info = () => {
+    if (currentUser) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if (get_log_info()) {
+      navigate('/home', { replace: true });
+    } else {
+      navigate('/signup', { replace: true });
+    }
+  }, [get_log_info()]);
   return (
     <>
       {get_log_info() ? (
-        <Navigate to="/dashboard" />
+        <Navigate to="/home" />
       ) : (
         <>
           <div className={style.container}>

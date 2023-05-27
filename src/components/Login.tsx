@@ -4,24 +4,25 @@ import style from './../styles/Auth.module.css';
 import heroImg from './../assets/signup-banner.png';
 import { checkIfUserExists } from '../authentication/authentication';
 import { int, loginValidateSchema } from '../validation/validationScema';
-import { useFormik } from 'formik';
+import { replace, useFormik } from 'formik';
 import { useAppDispatch } from '../hooks/hook';
 import { DummyDataInter, addCurrentUser } from '../slice/Slice';
+import { useEffect } from 'react';
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const handleLogIn = () => {
+  const handleLogIn = async () => {
     if (checkIfUserExists(formik.values.email, formik.values.password)) {
       // user already exists
       formik.resetForm();
-      const emailExists = userData.filter((user: DummyDataInter) => {
+      const emailExists = await userData.filter((user: DummyDataInter) => {
         if (user.email === formik.values.email) {
           return user;
         }
       });
       dispatch(addCurrentUser(emailExists[0]));
-      navigate('/dashboard');
+      navigate('/home');
     } else {
       alert('User does not exists');
     }
@@ -43,11 +44,17 @@ const Login = () => {
       return false;
     }
   };
-
+  useEffect(() => {
+    if (get_log_info()) {
+      navigate('/home', { replace: true });
+    } else {
+      navigate('/', { replace: true });
+    }
+  }, [get_log_info()]);
   return (
     <>
       {get_log_info() ? (
-        <Navigate to={'/dashboard'} />
+        <Navigate to={'/home'} />
       ) : (
         <div className={style.container}>
           {/* Register
@@ -104,7 +111,7 @@ const Login = () => {
               Don't have an account ?
               <span
                 className="routeLink RegisterRoute"
-                onClick={() => navigate('/register')}
+                onClick={() => navigate('/signup')}
               >
                 &nbsp;Register
               </span>

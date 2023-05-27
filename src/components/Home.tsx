@@ -6,7 +6,7 @@ import Table from '../dashboard/TableData/Table';
 import { logOutUser } from '../slice/Slice';
 import { replace } from 'formik';
 
-const Dashboard = () => {
+const Home = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -14,7 +14,6 @@ const Dashboard = () => {
     dispatch(logOutUser());
   };
   const currentUser = JSON.parse(localStorage.getItem('CurrentData')!); //
-  const userData = JSON.parse(localStorage.getItem('UserData')!); //
   const get_log_info = () => {
     if (currentUser) {
       return true;
@@ -25,14 +24,16 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!get_log_info()) {
-      navigate('/', { replace: true });
+      navigate('/singup', { replace: true });
+    } else {
+      navigate('/home', { replace: true });
     }
   }, [get_log_info()]);
 
   return (
     <>
       <div className={style.containerRegister}>
-        <div className={style.dashboard}>
+        <div className={style.home}>
           <header className={style.header}>
             <nav className={style.navbar}>
               <h2>logo</h2>
@@ -48,4 +49,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Home;

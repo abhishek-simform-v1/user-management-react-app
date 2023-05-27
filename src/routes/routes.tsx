@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Dashboard from '../components/Dashboard';
+import Home from '../components/Home';
 import Login from '../components/Login';
 import Register from '../components/Register';
 import PagenotFound from '../components/PagenotFound';
@@ -13,15 +13,15 @@ export const routerOfApp = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: '/dashboard',
-    element: <Dashboard />,
+    path: '/home',
+    element: <Home />,
   },
   {
-    path: '/register',
+    path: '/signup ',
     element: <Register />,
   },
   {
     path: '*',
-    element: <PagenotFound />,
+    element: <Register />,
   },
 ]);
