@@ -1,5 +1,5 @@
 .container {
-  font-family: "Poppins";
+  font-family: 'Poppins';
   width: 80%;
   background-color: white;
   margin: 0 auto;
@@ -48,4 +48,19 @@
     width: 90%;
     padding: 50px 30px;
   }
+}
+/* header */
+.header {
+  background-color: #9ddeff;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.navbar {
+  display: flex;
+  margin: 0 auto;
+  padding: 1rem 4rem;
+  max-width: 1300px;
+  justify-content: space-between;
 }

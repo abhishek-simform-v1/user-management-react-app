@@ -1,5 +1,5 @@
-import { createSlice, isAction } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, isAction } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 export interface DummyDataInter {
   profile_img: string;
   name: string;
@@ -11,39 +11,27 @@ export interface DummyDataInter {
 export type initType = {
   currentUser: DummyDataInter;
   users: DummyDataInter[];
-  logedIn: boolean;
 };
 
 const init: initType = {
-  currentUser: {
-    profile_img: "",
-    name: "",
-    email: "",
-    phone_number: "",
-    password: "",
-    confirm_pwd: "",
-  },
-  users: JSON.parse(localStorage.getItem("user")!) || [],
-  logedIn: false,
+  currentUser: JSON.parse(localStorage.getItem('CurrentData')!),
+  users: JSON.parse(localStorage.getItem('UserData')!) || [],
 };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState: init,
   reducers: {
     addUser: (state, action: PayloadAction<DummyDataInter>) => {
       state.users.push(action.payload);
-      localStorage.setItem("UserData", JSON.stringify(state.users));
-      state.logedIn = true;
+      localStorage.setItem('UserData', JSON.stringify(state.users));
     },
     addCurrentUser: (state, action: PayloadAction<DummyDataInter>) => {
       state.currentUser = action.payload;
-      state.logedIn = true;
-      localStorage.setItem("CurrentData", JSON.stringify(state.currentUser));
+      localStorage.setItem('CurrentData', JSON.stringify(state.currentUser));
     },
-    logOutUser: (state) => {
-      state.logedIn = false;
-      localStorage.removeItem("CurrentData");
+    logOutUser: () => {
+      localStorage.removeItem('CurrentData');
     },
   },
 });

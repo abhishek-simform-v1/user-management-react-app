@@ -1,40 +1,40 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
 export const int = {
-  profile_img: "",
-  name: "",
-  email: "",
-  phone_number: "",
-  password: "",
-  confirm_pwd: "",
+  profile_img: '',
+  name: '',
+  email: '',
+  phone_number: '',
+  password: '',
+  confirm_pwd: '',
 };
 export const validationSchema = Yup.object().shape({
   name: Yup.string()
-    .min(15, "Name should contain atleat 15 characters!")
-    .required("Name Required!"),
+    .min(15, 'Name should contain atleat 15 characters!')
+    .required('Name Required!'),
   email: Yup.string()
-    .required("Email Required!")
+    .required('Email Required!')
     .matches(
       /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-      "Invaild Email Format!"
+      'Invaild Email Format!'
     ),
   phone_number: Yup.string()
-    .required("Phone Number Required!")
+    .required('Phone Number Required!')
     .matches(
       /^(?:(?:\+|0{0,2})91(\s*[-]\s*)?|[0]?)?[789]\d{9}$/,
-      "Invalid phone number!"
+      'Invalid phone number!'
     ),
 
-  password: Yup.string().required("Password Required!"),
+  password: Yup.string().required('Password Required!'),
   confirm_pwd: Yup.string()
-    .required("Required!")
+    .required('Required!')
     .oneOf(
-      [Yup.ref("password"), ""],
-      "Password and Confirm password does not match!"
+      [Yup.ref('password'), ''],
+      'Password and Confirm password does not match!'
     ),
   profile_img: Yup.string()
-    .required("You need to provide a file")
-    .test("fileSize", "The file is too large", (value) => {
+    .required('You need to provide a file')
+    .test('fileSize', 'The file is too large', (value) => {
       // Decode the Base64 string
       function utf8_to_b64(value: string) {
         return window.btoa(unescape(encodeURIComponent(value)));
@@ -50,7 +50,7 @@ export const validationSchema = Yup.object().shape({
       const maxSize = 2 * 1024 * 1024;
       return fileSizeInKB <= maxSize;
     })
-    .test("fileType", "Invalid File Format!(should be jpg or png)", (value) => {
+    .test('fileType', 'Invalid File Format!(should be jpg or png)', (value) => {
       if (!value) {
         return true;
       }
@@ -65,10 +65,10 @@ export const validationSchema = Yup.object().shape({
         }
       }
       const base64Type = getBase64Type(value);
-      const supportedTypes = ["image/jpeg", "image/jpg", "image/png"];
+      const supportedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
       return supportedTypes.includes(`image/${base64Type}`);
     })
-    .required("Profile photo Required!"),
+    .required('Profile photo Required!'),
 });
 // validating profile_img
 export function checkIfFilesAreTooBig(files?: [File]): boolean {
@@ -88,7 +88,7 @@ export function checkIfFilesAreCorrectType(files?: [File]): boolean {
   let valid = true;
   if (files) {
     files.map((file) => {
-      if (!["application/pdf", "image/jpeg", "image/png"].includes(file.type)) {
+      if (!['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) {
         valid = false;
       }
     });
@@ -97,24 +97,28 @@ export function checkIfFilesAreCorrectType(files?: [File]): boolean {
 }
 // Login Form Validation
 export const loginValues = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 export const loginValidateSchema = Yup.object({
   email: Yup.string()
-    .required("Email Required!")
+    .required('Email Required!')
     .matches(
       /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-      "Invaild Email Format!"
+      'Invaild Email Format!'
     ),
-  password: Yup.string().required("Password Required!"),
+  password: Yup.string().required('Password Required!'),
 });
-export const currentUser = JSON.parse(localStorage.getItem("CurrentData")!);
+export const currentUser = JSON.parse(localStorage.getItem('CurrentData')!); //
+export const userData = JSON.parse(localStorage.getItem('UserData')!); //
 export const get_log_info = () => {
   if (currentUser) {
+    // console.log('first');
     return true;
   } else {
+    // console.log('last');
+
     return false;
   }
 };

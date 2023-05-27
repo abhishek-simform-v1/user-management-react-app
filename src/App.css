@@ -1,42 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-.container{
-    font-family: "Poppins";
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #444;
+.container {
+  font-family: 'Poppins';
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
   font-weight: 500;
-
 }
-.input{
-  background-color:  #faead6;
-  border:none;
-  padding:12px;
+.input {
+  background-color: #faead6;
+  border: none;
+  padding: 12px;
   border-radius: 5px;
   font-family: inherit;
   font-weight: 500;
 }
-.input:focus{
- outline: 5px solid #ffce93b2;
+.input:focus {
+  outline: 5px solid #ffce93b2;
 }
-.inputField{
+.inputField {
   display: flex;
   gap: 0.2rem;
   flex-direction: column;
 }
-.inputFile{
+.inputFile {
   /* display: none; */
   display: flex;
   align-items: center;
   justify-content: center;
-position: relative;
+  position: relative;
 }
-.profile_img{
-display: none;
+.profile_img {
+  display: none;
 }
-.btn{
+.btn {
   padding: 0.8rem 1rem;
   color: #fff;
   font-weight: 600;
@@ -44,30 +43,67 @@ display: none;
   outline: none;
   border-radius: 5px;
 }
-button{
+.btnHome {
+  background-color: #00689c;
+}
+button {
   cursor: pointer;
 }
-.error{
+.error {
   color: red;
   /* display: none; */
 }
-.routeLink{
+.routeLink {
   color: red;
   cursor: pointer;
 }
-.RegisterRoute{
+.RegisterRoute {
   color: #0284c7;
 }
-.logoutBtn{
+.logoutBtn {
   background-color: #0284c7;
+  transition: all 0.3s;
 }
-.title{
+.logoutBtn:hover {
+  background-color: #00689c;
+}
+.title {
   font-size: 3rem;
 }
-.fileImg{
+.fileImg {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   border: 4px solid #0284c7;
   cursor: pointer;
+}
+.profileGrid {
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: center;
+}
+.profileCard {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 2rem;
+  gap: 2rem;
+  border-radius: 2rem;
+}
+.profilecontainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.CurrentUserCard {
+  background-color: #0284c7;
+  color: #fff;
+  flex-direction: row;
 }

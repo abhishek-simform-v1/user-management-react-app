@@ -1,27 +1,27 @@
-import { createBrowserRouter } from "react-router-dom";
-import Dashboard from "../components/Dashboard";
-import Login from "../components/Login";
-import Register from "../components/Register";
-import PagenotFound from "../components/PagenotFound";
+import { createBrowserRouter } from 'react-router-dom';
+import Dashboard from '../components/Dashboard';
+import Login from '../components/Login';
+import Register from '../components/Register';
+import PagenotFound from '../components/PagenotFound';
 
 /** import all components */
 
 /** root routes */
 export const routerOfApp = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Login />,
   },
   {
-    path: "/dashboard",
+    path: '/dashboard',
     element: <Dashboard />,
   },
   {
-    path: "/register",
+    path: '/register',
     element: <Register />,
   },
   {
-    path: "*",
+    path: '*',
     element: <PagenotFound />,
   },
 ]);
