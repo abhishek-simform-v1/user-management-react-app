@@ -1,11 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 .container {
   font-family: 'Poppins';
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: #444;
   font-weight: 500;
 }
@@ -87,7 +84,8 @@ button {
   justify-content: center;
 }
 .profileCard {
-  background-color: #fff;
+  background-color: hsl(34, 78%, 91%);
+
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,14 +1,14 @@
 .container {
   font-family: 'Poppins';
   width: 80%;
-  background-color: white;
   margin: 0 auto;
   height: max-content;
+  margin: 0px auto;
+  padding: 62px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  padding: 50px 50px;
   gap: 5rem;
 }
 .heroImgContainer {

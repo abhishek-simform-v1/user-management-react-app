@@ -1,9 +1,6 @@
-.currentUser{
-    background-color: aqua;
-    display: flex;
+.currentUser {
+  display: flex;
 }
-.user{
-    display: flex;
-
-    background-color: aquamarine;
+.user {
+  display: flex;
 }

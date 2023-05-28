@@ -35,7 +35,7 @@ const Table = () => {
             <div key={index}>
               <div className="profileCard">
                 <div>
-                  {/* <img src={data.profile_img || profiler} className="fileImg" /> */}
+                  <img src={data.profile_img || profiler} className="fileImg" />
                 </div>
                 <div>
                   <div>

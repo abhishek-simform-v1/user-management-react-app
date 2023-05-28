@@ -15,9 +15,15 @@ const Register = () => {
   const [file, setFile] = useState('');
   const dispatch = useAppDispatch();
   const handleSignUp = () => {
-    if (checkIfUserExists(formik.values.email, formik.values.phone_number)) {
+    console.log(formik.values.email, formik.values.phone_number);
+    if (
+      checkIfUserExists(
+        formik.values.email,
+        formik.values.password,
+        formik.values.phone_number
+      )
+    ) {
       // user already exists
-      console.log(formik.values.email, formik.values.phone_number);
       alert('User already exists');
       formik.resetForm();
     } else {
@@ -75,7 +81,15 @@ const Register = () => {
                     {formik.values.profile_img ? (
                       <img src={file || ''} alt="" className="fileImg" />
                     ) : (
-                      <p>+Photo</p>
+                      <div>
+                        <p style={{ textAlign: 'center' }}>+Photo</p>
+                        {formik.touched.profile_img &&
+                        formik.errors.profile_img ? (
+                          <span className="error">
+                            {formik.errors.profile_img}
+                          </span>
+                        ) : null}
+                      </div>
                     )}
                     <input
                       type="file"
@@ -86,9 +100,6 @@ const Register = () => {
                       onChange={onUpload}
                     />
                   </label>
-                  {formik.touched.profile_img && formik.errors.profile_img ? (
-                    <span className="error">{formik.errors.profile_img}</span>
-                  ) : null}
                 </div>
                 <div className="inputField">
                   <label htmlFor="name">Name</label>
