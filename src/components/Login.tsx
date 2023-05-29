@@ -48,7 +48,7 @@ const Login = () => {
     if (get_log_info()) {
       navigate("/home", { replace: true });
     } else {
-      navigate("/signup", { replace: true });
+      navigate("/", { replace: true });
     }
   }, [get_log_info()]);
   return (
