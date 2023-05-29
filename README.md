@@ -36,16 +36,12 @@ To clone this project flow below step.
   ```
   git clone https://github.com/abhishek-simform-v1/user-management-react-app.git
   ```
-- **Step 3:** Above command create a file and get all the code from github and generate an copy of that project which later one you can make changes using any Editor.
-  ```
-  cd user-login-system
-  ```
-- **Step 4:** After Running above code it will take you to that folder.To run this Practical you have to first install `yarn` or if your have node pre install then user `npm` run following command to install all the dependency.
+- **Step 3:** After Running above code it will take you to that folder.To run this Practical you have to first install `yarn` or if your have node pre install then user `npm` run following command to install all the dependency.
   ```
   npm install
   ```
   Then is will start installing all the required file for project in you local system.
-- **Step 5:** After install the dependency now use command `npm start` or if you are using **yarn** use `yarn dev` this command generate a url from which you can see the project in you browser.
+- **Step 4:** After install the dependency now use command `npm start` or if you are using **yarn** use `yarn dev` this command generate a url from which you can see the project in you browser.
 
 ## ScreenShot
 
