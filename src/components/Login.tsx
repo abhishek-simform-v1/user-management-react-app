@@ -44,18 +44,19 @@ const Login = () => {
       return false;
     }
   };
+  let loginInfo = get_log_info();
   useEffect(() => {
-    if (get_log_info()) {
+    if (loginInfo) {
       navigate("/home", { replace: true });
     } else if (!userData) {
       navigate("/signup", { replace: true });
-    } else {
+    } else if (userData) {
       navigate("/", { replace: true });
     }
-  }, [get_log_info()]);
+  }, [loginInfo]);
   return (
     <>
-      {get_log_info() ? (
+      {loginInfo ? (
         <Navigate to={"/home"} />
       ) : (
         <div className={style.container}>
