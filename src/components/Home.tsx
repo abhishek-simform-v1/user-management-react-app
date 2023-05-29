@@ -10,7 +10,7 @@ const Home = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
-    navigate("/", { replace: true });
+    navigate("/singup", { replace: true });
     dispatch(logOutUser());
   };
   const currentUser = JSON.parse(localStorage.getItem("CurrentData")!); //
