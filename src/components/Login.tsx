@@ -47,6 +47,8 @@ const Login = () => {
   useEffect(() => {
     if (get_log_info()) {
       navigate("/home", { replace: true });
+    } else if (!userData) {
+      navigate("/signup", { replace: true });
     } else {
       navigate("/", { replace: true });
     }
