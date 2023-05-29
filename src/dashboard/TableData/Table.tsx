@@ -1,10 +1,10 @@
-import { memo } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
-import { DummyDataInter } from '../../slice/Slice';
+import { memo } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/hook";
+import { DummyDataInter } from "../../slice/Slice";
 
 const Table = () => {
-  const currentUser = JSON.parse(localStorage.getItem('CurrentData')!); //
-  const userData = JSON.parse(localStorage.getItem('UserData')!); //
+  const currentUser = JSON.parse(localStorage.getItem("CurrentData")!); //
+  const userData = JSON.parse(localStorage.getItem("UserData")!); //
 
   return (
     <>
@@ -35,7 +35,7 @@ const Table = () => {
             <div key={index}>
               <div className="profileCard">
                 <div>
-                  <img src={data.profile_img || profiler} className="fileImg" />
+                  <img src={data.profile_img} className="fileImg" />
                 </div>
                 <div>
                   <div>
