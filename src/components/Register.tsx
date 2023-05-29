@@ -84,12 +84,6 @@ const Register = () => {
                     ) : (
                       <div>
                         <p style={{ textAlign: "center" }}>+Photo</p>
-                        {formik.touched.profile_img &&
-                        formik.errors.profile_img ? (
-                          <span className="error">
-                            {formik.errors.profile_img}
-                          </span>
-                        ) : null}
                       </div>
                     )}
                     <input
@@ -100,6 +94,9 @@ const Register = () => {
                       placeholder="Enter the name"
                       onChange={onUpload}
                     />
+                    {formik.touched.profile_img && formik.errors.profile_img ? (
+                      <span className="error">{formik.errors.profile_img}</span>
+                    ) : null}
                   </label>
                 </div>
                 <div className="inputField">
