@@ -1,13 +1,13 @@
 // import React from "react";
-import { Navigate, useNavigate } from 'react-router-dom';
-import style from './../styles/Auth.module.css';
-import heroImg from './../assets/signup-banner.png';
-import { checkIfUserExists } from '../authentication/authentication';
-import { int, loginValidateSchema } from '../validation/validationScema';
-import { replace, useFormik } from 'formik';
-import { useAppDispatch } from '../hooks/hook';
-import { DummyDataInter, addCurrentUser } from '../slice/Slice';
-import { useEffect } from 'react';
+import { Navigate, useNavigate } from "react-router-dom";
+import style from "./../styles/Auth.module.css";
+import heroImg from "./../assets/signup-banner.png";
+import { checkIfUserExists } from "../authentication/authentication";
+import { int, loginValidateSchema } from "../validation/validationScema";
+import { replace, useFormik } from "formik";
+import { useAppDispatch } from "../hooks/hook";
+import { DummyDataInter, addCurrentUser } from "../slice/Slice";
+import { useEffect } from "react";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -22,9 +22,9 @@ const Login = () => {
         }
       });
       dispatch(addCurrentUser(emailExists[0]));
-      navigate('/home');
+      navigate("/home");
     } else {
-      alert('User does not exists');
+      alert("User does not exists");
     }
   };
   const handleReset = () => {
@@ -35,8 +35,8 @@ const Login = () => {
     validationSchema: loginValidateSchema,
     onSubmit: handleLogIn,
   });
-  const currentUser = JSON.parse(localStorage.getItem('CurrentData')!); //
-  const userData = JSON.parse(localStorage.getItem('UserData')!); //
+  const currentUser = JSON.parse(localStorage.getItem("CurrentData")!); //
+  const userData = JSON.parse(localStorage.getItem("UserData")!); //
   const get_log_info = () => {
     if (currentUser) {
       return true;
@@ -46,15 +46,15 @@ const Login = () => {
   };
   useEffect(() => {
     if (get_log_info()) {
-      navigate('/home', { replace: true });
+      navigate("/home", { replace: true });
     } else {
-      navigate('/', { replace: true });
+      navigate("/signup", { replace: true });
     }
   }, [get_log_info()]);
   return (
     <>
       {get_log_info() ? (
-        <Navigate to={'/home'} />
+        <Navigate to={"/home"} />
       ) : (
         <div className={style.container}>
           {/* Register
@@ -111,7 +111,7 @@ const Login = () => {
               Don't have an account ?
               <span
                 className="routeLink RegisterRoute"
-                onClick={() => navigate('/signup')}
+                onClick={() => navigate("/signup")}
               >
                 &nbsp;Register
               </span>

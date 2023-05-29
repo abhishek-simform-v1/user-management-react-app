@@ -9,17 +9,16 @@ Here below I mesion all task we have to complete in this practical:
 - Setup redux architecture in the app.
 - Add two routes using react-router-dom - /signup and /home
 
-[Demo Link](https://user-login-system.onrender.com)
+[Demo Link](https://user-management-reactapp-simform.netlify.app/)
 
 ## Technologies
 
 - **React**
 - **Redux-toolkit**
 - **Typescript**
-- **Bcryptjs**
-- **TailwindCss**
 - **React-router-dom**
 - **Formik**
+- **Yup**
 
 ## Feature
 
@@ -46,16 +45,16 @@ To clone this project flow below step.
   npm install
   ```
   Then is will start installing all the required file for project in you local system.
-- **Step 5:** After install the dependency now use command `npm run dev` or if you are using **yarn** use `yarn dev` this command generate a url from which you can see the project in you browser.
+- **Step 5:** After install the dependency now use command `npm start` or if you are using **yarn** use `yarn dev` this command generate a url from which you can see the project in you browser.
 
 ## ScreenShot
 
-- **SignUp**
-
-![image](https://github.com/vipulc8/user-login-system/assets/122255127/fcc81512-949f-4f8d-b8d5-d604c0e07c7b)
-
 - **Login**
-  ![image](https://www.linkpicture.com/q/Screenshot-from-2023-05-23-13-51-51.png)
+
+![image](./src/assets/Screenshot%20from%202023-05-29%2011-02-59.png)
+
+- **SignUp**
+  ![image](./src/assets/Screenshot%20from%202023-05-29%2011-04-01.png)
 
 - **Home/Dashbaord Page**
-  ![image](https://www.linkpicture.com/q/Screenshot-from-2023-05-23-14-00-37.png)
+  ![image](./src/assets/Screenshot%20from%202023-05-29%2011-11-56.png)

@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
-import { Navigate, redirect, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../hooks/hook';
-import style from './../styles/Auth.module.css';
-import Table from '../dashboard/TableData/Table';
-import { logOutUser } from '../slice/Slice';
-import { replace } from 'formik';
+import React, { useEffect } from "react";
+import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../hooks/hook";
+import style from "./../styles/Auth.module.css";
+import Table from "../dashboard/TableData/Table";
+import { logOutUser } from "../slice/Slice";
+import { replace } from "formik";
 
 const Home = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
-    navigate('/', { replace: true });
+    navigate("/", { replace: true });
     dispatch(logOutUser());
   };
-  const currentUser = JSON.parse(localStorage.getItem('CurrentData')!); //
+  const currentUser = JSON.parse(localStorage.getItem("CurrentData")!); //
   const get_log_info = () => {
     if (currentUser) {
       return true;
@@ -24,9 +24,9 @@ const Home = () => {
 
   useEffect(() => {
     if (!get_log_info()) {
-      navigate('/singup', { replace: true });
+      navigate("/signup", { replace: true });
     } else {
-      navigate('/home', { replace: true });
+      navigate("/home", { replace: true });
     }
   }, [get_log_info()]);
 

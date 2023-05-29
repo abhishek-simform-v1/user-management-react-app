@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import style from './../styles/Auth.module.css';
-import heroImg from './../assets/signup-banner.png';
-import { useFormik } from 'formik';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
-import convertToBase64 from '../helper/convert';
-import { int, validationSchema } from '../validation/validationScema';
-import { useAppDispatch } from '../hooks/hook';
-import { addCurrentUser, addUser } from '../slice/Slice';
-import { checkIfUserExists } from '../authentication/authentication';
+import React, { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import style from "./../styles/Auth.module.css";
+import heroImg from "./../assets/signup-banner.png";
+import { useFormik } from "formik";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+import convertToBase64 from "../helper/convert";
+import { int, validationSchema } from "../validation/validationScema";
+import { useAppDispatch } from "../hooks/hook";
+import { addCurrentUser, addUser } from "../slice/Slice";
+import { checkIfUserExists } from "../authentication/authentication";
 const Register = () => {
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState("");
   const dispatch = useAppDispatch();
   const handleSignUp = () => {
     console.log(formik.values.email, formik.values.phone_number);
@@ -24,15 +24,15 @@ const Register = () => {
       )
     ) {
       // user already exists
-      alert('User already exists');
+      alert("User already exists");
       formik.resetForm();
     } else {
-      alert('New User Created');
+      alert("New User Created");
       // set current user and login status
       dispatch(addUser(formik.values));
       dispatch(addCurrentUser(formik.values));
       formik.resetForm();
-      navigate('/home');
+      navigate("/home");
     }
   };
 
@@ -44,30 +44,31 @@ const Register = () => {
   const onUpload = async (e: any) => {
     const base64: any = await convertToBase64(e.target.files[0]);
     setFile(base64);
-    formik.setFieldValue('profile_img', base64);
+    formik.setFieldValue("profile_img", base64);
   };
   const handleReset = () => {
     formik.resetForm();
   };
-  const currentUser = JSON.parse(localStorage.getItem('CurrentData')!); //
   const get_log_info = () => {
+    const currentUser = JSON.parse(localStorage.getItem("CurrentData")!); //
     if (currentUser) {
       return true;
     } else {
       return false;
     }
   };
+  let loginInfo = get_log_info();
   const navigate = useNavigate();
   useEffect(() => {
-    if (get_log_info()) {
-      navigate('/home', { replace: true });
+    if (loginInfo) {
+      navigate("/home", { replace: true });
     } else {
-      navigate('/signup', { replace: true });
+      navigate("/signup", { replace: true });
     }
-  }, [get_log_info()]);
+  }, [loginInfo]);
   return (
     <>
-      {get_log_info() ? (
+      {loginInfo ? (
         <Navigate to="/home" />
       ) : (
         <>
@@ -79,10 +80,10 @@ const Register = () => {
                 <div className="inputFile">
                   <label htmlFor="profile_img">
                     {formik.values.profile_img ? (
-                      <img src={file || ''} alt="" className="fileImg" />
+                      <img src={file || ""} alt="" className="fileImg" />
                     ) : (
                       <div>
-                        <p style={{ textAlign: 'center' }}>+Photo</p>
+                        <p style={{ textAlign: "center" }}>+Photo</p>
                         {formik.touched.profile_img &&
                         formik.errors.profile_img ? (
                           <span className="error">
@@ -199,7 +200,7 @@ const Register = () => {
               </form>
               <h4>
                 Already have an account ?
-                <span className="routeLink" onClick={() => navigate('/')}>
+                <span className="routeLink" onClick={() => navigate("/")}>
                   &nbsp; Login
                 </span>
               </h4>
