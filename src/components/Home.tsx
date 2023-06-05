@@ -21,30 +21,35 @@ const Home = () => {
       return false;
     }
   };
-
+  let loginInfo = get_log_info();
+  console.log(loginInfo);
   useEffect(() => {
-    if (!get_log_info()) {
-      navigate("/signup", { replace: true });
-    } else {
+    if (loginInfo) {
       navigate("/home", { replace: true });
+    } else {
+      navigate("/signup", { replace: true });
     }
-  }, [get_log_info()]);
+  }, [loginInfo]);
 
   return (
     <>
-      <div className={style.containerRegister}>
-        <div className={style.home}>
-          <header className={style.header}>
-            <nav className={style.navbar}>
-              <h2>logo</h2>
-              <button className="btn logoutBtn " onClick={handleLogout}>
-                Logout
-              </button>
-            </nav>
-          </header>
-          <Table />
+      {loginInfo ? (
+        <div className={style.containerRegister}>
+          <div className={style.home}>
+            <header className={style.header}>
+              <nav className={style.navbar}>
+                <h2>logo</h2>
+                <button className="btn logoutBtn " onClick={handleLogout}>
+                  Logout
+                </button>
+              </nav>
+            </header>
+            <Table />
+          </div>
         </div>
-      </div>
+      ) : (
+        <Navigate to={"/signup"} />
+      )}
     </>
   );
 };

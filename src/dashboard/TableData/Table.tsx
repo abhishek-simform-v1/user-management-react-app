@@ -1,10 +1,10 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hook";
 import { DummyDataInter } from "../../slice/Slice";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Table = () => {
   const currentUser = JSON.parse(localStorage.getItem("CurrentData")!); //
-  const userData = JSON.parse(localStorage.getItem("UserData")!); //
 
   return (
     <>
